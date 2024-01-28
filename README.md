@@ -36,5 +36,36 @@ hangman59/
 └── milestone_5.py
 
 
+## Example Code used
+
+```python
+# Creating my list with my favourite fruits
+word_list = ["apple", "orange", "kiwi", "mango", "cherry"]
+
+# Creating my hangman class
+class Hangman:
+    def __init__(self, word_list, num_lives=5):
+        self.word_list = word_list
+        self.num_lives = num_lives
+        self.word = random.choice(word_list)
+        self.word_guessed = ['_' for _ in self.word]
+        self.num_letters = len(set(self.word))  # Count of unique letters
+        self.list_of_guesses = []
+
+# Method to ask the user for input of a single character that is alphabetical 
+    def ask_for_input(self):
+        while True:
+            guess = input("Guess a letter: ")
+            if len(guess) != 1 or not guess.isalpha():
+                print("Invalid letter. Please, enter an alphabetical character")
+            elif guess in self.list_of_guesses:
+                print("You already tried that letter!")
+            else:
+                self.check_guess(guess)
+                # Appends the guess to list_of_guesses
+                self.list_of_guesses.append(guess)
+                break
+
+
 
 
